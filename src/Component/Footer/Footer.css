@@ -1,0 +1,130 @@
+.Footer {
+  padding: 5rem 0 0 0;
+  width: 100%;
+  position: relative;
+  background-color: #042726;
+  color: white;
+}
+
+.Footer-main,
+.footer-down {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  gap: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.footer-box {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 5rem;
+}
+.footer-card:nth-child(-n+2) {
+  border-right: 1px solid rgba(255, 255, 255, .3);
+}
+
+.footer-card{
+  text-align: center;
+}
+.footer-card h2{
+  font-family: Jost, sans-serif;
+  text-transform: uppercase;
+  font-weight: 300;
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.58824em;
+  letter-spacing: .14em;
+}
+.footer-card ul{
+  padding: 0;
+}
+.footer-card ul li{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 400;
+  color: #CED8D8;
+}
+.footer-card ul li a{
+  font-size: 14px;
+  font-weight: 400;
+  color: #CED8D8;
+  text-decoration: none;
+}
+.footer-card ul li a:hover{
+  color: #C49871;
+}
+
+.footer-logo{
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.footer-logo img{
+ width: 100%;
+ background-color: #042726;
+ max-height: 80px;
+ margin: 0 10px;
+ padding: 0 15px;
+ object-fit: cover;
+}
+
+.footer-copyright {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, .3);
+  padding-top: 1rem;
+  color: #ced8d8;
+}
+
+.footer-copyright p {
+  font-size: 12px;
+  font-weight: 400;
+  color: #CED8D8;
+  letter-spacing: 2px;
+  line-height: 20px;
+  text-transform: uppercase;
+}
+
+.footer-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.footer-media a{
+  text-decoration: none;
+  color: #CED8D8;
+}
+.footer-media a:hover{
+  text-decoration: none;
+  color: #C49871;
+}
+.footer-media p:nth-child(-n+2) {
+  padding-right: 10px;
+  border-right: 1px solid rgba(255, 255, 255, .3);
+}
+
+
+@media (min-width: 1200px) {
+  .Footer-main {
+    max-width: 1140px;
+  }
+
+  .footer-down {
+    max-width: 1140px;
+  }
+}
+
+@media only screen and (max-width: 680px) {}
+
+@media only screen and (max-width: 420px) {}

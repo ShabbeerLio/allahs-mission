@@ -1,13 +1,125 @@
-.Banner{
-    position: relative;
+.Banners {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 100vh;
+  }
+  
+  .Banners-detail {
     width: 100%;
-    padding: 2rem;
-}
-.Banner img{
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .banner-top{
     position: absolute;
-    height: 100%;
+    top: 2.5%;
+    left: 25%;
+    z-index: 2;
+    width: 50%;
+  }
+  
+  .banner-image img {
+    padding: 20px;
+    position: absolute;
     width: 100%;
+    height: 100%;
     object-fit: cover;
-    border-radius: 15px;
-}
+    top: 0;
+    left: 0;
+    filter: brightness(0.5);
+  }
+  /* 
+  .banner-image:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      display: inline-block;
+      opacity: 0.9;
+      background-image: linear-gradient(0deg, #000 0%, rgba(255, 255, 255, 0) 100%);
+    } */
+  
+  .Banners-detail {
+    position: relative;
+    text-align: center;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5rem;
+  }
+
+  .banner-left{
+    width: 60%;
+  }
+  .banner-right{
+    width: 40%;
+  }
+  
+  .Banners-detail h1 {
+    position: relative;
+    margin-bottom: 20px;
+    font-size: 70px;
+    text-transform: uppercase;
+    font-family: Jost, sans-serif;
+    line-height: 1.2em;
+    -webkit-animation-delay: 0.6s;
+    animation-delay: 0.6s;
+    color: #fff;
+    font-weight: 800;
+    letter-spacing: 8px;
+    text-align: left;
+  }
+  /* 
+  .Banners-detail h4 {
+    font-size: 20px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: #AF1740;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    -webkit-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+  } */
+  
+  .banner-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .banner-reserve {
+    position: relative;
+  }
+  
+  .banner-reserve span {
+    color: white;
+  }
+  
+  .banner-reserve svg {
+    color: white;
+  }
+  
+  @media screen and (min-width: 1200px) {
+    .Banners-detail {
+      max-width: 1080px;
+    }
+  }
+  
+  @media only screen and (max-width: 680px) {
+    .Banners-detail h1 {
+      font-size: 30px;
+      letter-spacing: 5px;
+    }
+  
+    .Banners {
+      margin-top: 40px;
+      height: 60vh;
+    }
+  }

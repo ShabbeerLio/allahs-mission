@@ -1,0 +1,92 @@
+.home{
+    background-color: #102b2a;
+}
+
+/* Overlay background */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* Popup content */
+  .popup-content {
+    background: #fff;
+    border-radius: 8px;
+    width: 400px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    animation: popup-slide-down 0.3s ease-out;
+  }
+  
+  /* Popup heading */
+  .popup-content h2 {
+    margin: 0 0 10px;
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  /* Popup paragraph */
+  .popup-content p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #555;
+    line-height: 1.5;
+  }
+  
+  /* Buttons container */
+  .popup-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  /* Allow button */
+  .allow-btn {
+    background: #4caf50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .allow-btn:hover {
+    background: #45a049;
+  }
+  
+  /* Deny button */
+  .deny-btn {
+    background: #f44336;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .deny-btn:hover {
+    background: #e53935;
+  }
+  
+  /* Popup slide-down animation */
+  @keyframes popup-slide-down {
+    from {
+      transform: translateY(-30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }

@@ -1,12 +1,16 @@
 import React from 'react'
-import Banner from '../../Component/Banner/Banner'
+import Banners from '../../Component/Banner/Banner'
+import "./Home.css"
+import Overview from '../../Component/Overview/Overview'
 
 const Home = () => {
-    return (
-        <div>
-            <Banner />
-        </div>
-    )
+  return (
+    <div className='home'>
+      <Banners/>
+      
+      {/* <Overview/> */}
+    </div>
+  )
 }
 
 export default Home

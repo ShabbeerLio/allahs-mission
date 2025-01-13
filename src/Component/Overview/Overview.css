@@ -1,0 +1,54 @@
+.Overview {
+    padding: 6rem 0rem;
+    width: 100%;
+}
+
+.Overview-main {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.Overview-heading{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 5rem;
+}
+.Overview-heading img{
+    width: 20%;
+    object-fit: cover;
+    margin-bottom: 2rem;
+}
+.Overview-heading h2{
+    width: 60%;
+    font-family: Jost, sans-serif;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: #fff;
+    font-size: 28px;
+    line-height: 1.39286em;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+.Overview-heading h4{
+    color: #C49871;
+    font-family: Mrs Saint Delafield;
+    font-size: 55px;
+    line-height: 39px;
+    font-weight: 400;
+}
+
+@media screen and (min-width: 1200px) {
+    .Overview-main {
+        max-width: 1040px;
+    }
+}
+
+@media only screen and (max-width: 680px) {
+
+}
