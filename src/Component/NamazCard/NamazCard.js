@@ -16,7 +16,7 @@ const NamazCard = () => {
     { name: "Ashar", time: "16:15", image: ashar },
     { name: "Magrib", time: "17:45", image: magrib },
     { name: "Isha", time: "19:30", image: isha },
-    { name: "Jawal", time: "01:53", image: isha },
+    { name: "Jawal", time: "11:30", image: isha },
   ];
 
   const [currentPrayer, setCurrentPrayer] = useState(prayerTimes[0]);
