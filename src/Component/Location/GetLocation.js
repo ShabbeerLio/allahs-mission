@@ -77,6 +77,7 @@ const LocationPermissionPopup = () => {
                 }
 
                 const textResponse = await response.text();
+                console.log(textResponse,"textResponse")
                 const jsonResponse = JSON.parse(textResponse.slice(2, -1)); // Removing `?()` wrapper from response
                 setPrayerTimes(jsonResponse);
             } catch (err) {
@@ -86,7 +87,7 @@ const LocationPermissionPopup = () => {
 
         fetchPrayerTimes();
     }, [location]);
-    console.log(prayerTimes,"prayerTimes")
+    console.log(prayerTimes, "prayerTimes")
 
     return (
         <div>
@@ -107,18 +108,6 @@ const LocationPermissionPopup = () => {
                         </div>
                     </div>
                 </div>
-            )}
-            {error && <p style={{ color: "red" }}>{error}</p>}
-            {location.lat && location.lon && (
-                <p>
-                    Your location is:
-                    <br />
-                    Latitude: {location.lat}
-                    <br />
-                    Longitude: {location.lon}
-                    <br />
-                    Location Name: {locationName || "Fetching location name..."}
-                </p>
             )}
         </div>
     );

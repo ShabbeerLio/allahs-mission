@@ -43,7 +43,7 @@
   
   .company-logo img {
     width: 100%;
-    object-fit: cover;
+    object-fit: contain;
     /* padding: 8px 0; */
     max-height: 80px;
 
