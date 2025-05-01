@@ -1,117 +1,179 @@
 /* Main Card */
 .prayer-card {
-    width: 100%;
-    margin: 20px auto;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    /* background: #ffffff; */
-    font-family: Arial, sans-serif;
-  }
-  
-  /* Image Section */
-  .prayer-image {
-    position: relative;
-    height: 200px;
-    background-size: cover;
-    background-position: center;
-  }
-  .prayer-image:after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 50%;
-    left: 0;
-    display: inline-block;
-    opacity: 0.9;
-    background-image: linear-gradient(0deg, #000 0%, rgba(255, 255, 255, 0) 100%);
-  }
-  
-  .prayer-overlay {
-    margin-left: 1rem;
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    color: white;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
-    z-index: 2;
-  }
-  
-  .prayer-title {
-    font-size: 1.8rem;
-    font-weight: bold;
-    margin: 0;
-    font-family: Jost, sans-serif;
-  }
-  
-  .prayer-time-overlay {
-    font-size: 1rem;
-    margin: 0;
-  }
-  
-  /* List Section */
-  .prayer-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 2rem;
-    background:  linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(16,43,42,1) 50%, rgba(30,78,77,1) 100%);
-  }
-  
-  .prayer-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    background: transparent;
-    border: 1px solid #b58c67;
-    color: white;
-    font-size: 1rem;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .prayer-item.highlighted {
-    background: #b58c67;
-    color: white;
-    
-    font-weight: bold;
-    transform: scale(1.05);
-  }
-  
-  .prayer-name {
-    font-weight: bold;
-  }
-  
-  .prayer-time {
-    font-style: italic;
-  }
+  width: 100%;
+  margin: 20px auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  /* background: #ffffff; */
+  font-family: Arial, sans-serif;
+}
 
-  .overlay {
-    position: "fixed";
-    top: 0;
+/* Image Section */
+.prayer-image {
+  position: relative;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+}
+.prayer-image:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50%;
+  left: 0;
+  display: inline-block;
+  opacity: 0.9;
+  background-image: linear-gradient(0deg, #000 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.prayer-overlay {
+  margin-left: 1rem;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  z-index: 2;
+}
+
+.prayer-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 0;
+  font-family: Jost, sans-serif;
+}
+
+.prayer-time-overlay {
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* List Section */
+.prayer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 2rem;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(16, 43, 42, 1) 50%,
+    rgba(30, 78, 77, 1) 100%
+  );
+}
+
+.prayer-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background: transparent;
+  border: 1px solid #b58c67;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.prayer-item.highlighted {
+  background: #b58c67;
+  color: white;
+
+  font-weight: bold;
+  transform: scale(1.05);
+}
+
+.prayer-name {
+  font-weight: bold;
+}
+
+.prayer-time {
+  font-style: italic;
+}
+
+.overlay {
+  position: "fixed";
+  top: 0;
+  left: 0;
+  width: "100%";
+  height: "100%";
+  background-color: "rgba(0, 0, 0, 0.5)";
+  display: "flex";
+  justify-content: "center";
+  align-items: "center";
+}
+.modal {
+  background-color: #fff;
+  padding: "20px";
+  border-radius: "8px";
+  box-shadow: "0 4px 8px rgba(0, 0, 0, 0.2)";
+  text-align: "center";
+}
+.button {
+  padding: "10px 20px";
+  background-color: "#28a745";
+  color: "white";
+  border: "none";
+  border-radius: "5px";
+  cursor: "pointer";
+  margin-top: "15px";
+  font-size: "16px";
+}
+
+.inpt-bx {
+  background: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+.inpt-bx input{
+  background-color: transparent;
+  border: 1px solid #b58c67;
+  border-radius: 8px;
+  padding: 5px 10px;
+  color: white;
+  position: relative;
+}
+.inpt-bx .inpt{
+  position: relative;
+}
+.inpt-bx .inpt ul{
+  position: absolute;
+    top: 100%;
     left: 0;
-    width: "100%";
-    height: "100%";
-    background-color: "rgba(0, 0, 0, 0.5)";
-    display: "flex";
-    justify-content: "center";
-    align-items: "center";
-  }
-  .modal {
-    background-color : #fff;
-    padding: "20px";
-    border-radius: "8px";
-    box-shadow: "0 4px 8px rgba(0, 0, 0, 0.2)";
-    text-align: "center";
-  }
-  .button {
-    padding: "10px 20px";
-    background-color: "#28a745";
-    color: "white";
-    border: "none";
-    border-radius: "5px";
-    cursor: "pointer";
-    margin-top: "15px";
-    font-size: "16px";
-  }
+    background: white;
+    z-index: 9999;
+    color: black;
+    border-radius: 8px;
+    padding: 0;
+}
+/* .inpt-bx .inpt ul li{
+  display: flex;
+  border-bottom: 1px solid rgb(210, 210, 210);
+  padding: 5px;
+} */
+
+.suggestions-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: white;
+  /* border: 1px solid #ccc; */
+  position: absolute;
+  z-index: 1000;
+  width: 100%;
+}
+
+.suggestions-list li {
+  padding: 8px;
+  cursor: pointer;
+  border-bottom: 1px solid rgb(210, 210, 210);
+}
+
+.suggestions-list li:hover {
+  background-color: #f0f0f0;
+}

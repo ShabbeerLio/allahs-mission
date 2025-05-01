@@ -52,6 +52,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 5rem;
+    z-index: 3;
   }
 
   .banner-left{
