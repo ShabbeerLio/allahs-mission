@@ -185,6 +185,8 @@ const NamazCard = () => {
   }
 
   const [currentPrayer, setCurrentPrayer] = useState(prayerTimes[0]);
+  console.log(currentPrayer, "currentPrayer")
+  const [nextPrayer, setNextPrayer] = useState(null);
   const [azanPlayed, setAzanPlayed] = useState(false); // Tracks if Azan has already played
   const [isPermissionGranted, setIsPermissionGranted] = useState(false); // Permission flag
   const azanAudio = new Audio(Azan);
@@ -192,6 +194,43 @@ const NamazCard = () => {
   // Request for notification permission
   const handleUserPermission = () => {
     setIsPermissionGranted(true);
+
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          reverseGeocodeAndSearch(latitude, longitude);
+        },
+        (error) => {
+          console.error("Error getting location:", error);
+          alert("❌ Unable to get your location. Please enter manually.");
+        }
+      );
+    } else {
+      alert("❌ Geolocation is not supported by your browser.");
+    }
+  };
+  const reverseGeocodeAndSearch = async (latitude, longitude) => {
+    try {
+      const response = await axios.get(BIGDATACLOUD_BASE_URL, {
+        params: {
+          latitude,
+          longitude,
+          localityLanguage: "en",
+        },
+      });
+
+      const { city } = response.data;
+      if (city) {
+        setQuery(city);
+        searchForLocation(city, latitude, longitude);
+      } else {
+        alert("⚠️ Unable to detect your city. Please enter it manually.");
+      }
+    } catch (err) {
+      console.error("Reverse geocoding failed:", err);
+      alert("⚠️ Failed to detect your location. Please enter it manually.");
+    }
   };
 
   // Function to send push notification
@@ -217,44 +256,49 @@ const NamazCard = () => {
           currentMinute
         ).padStart(2, "0")}`;
 
-        // Determine current prayer
-        let foundPrayer = null;
+        let foundCurrentPrayer = null;
+        let foundNextPrayer = null;
+
         for (let i = 0; i < prayerTimes.length; i++) {
           const [hour, minute] = prayerTimes[i].time.split(":").map(Number);
+
           if (
+            currentHour > hour ||
+            (currentHour === hour && currentMinute >= minute)
+          ) {
+            foundCurrentPrayer = prayerTimes[i];
+          } else if (
             currentHour < hour ||
             (currentHour === hour && currentMinute < minute)
           ) {
-            foundPrayer = prayerTimes[i];
+            foundNextPrayer = prayerTimes[i];
             break;
           }
         }
 
-        // If all prayer times have passed today, fallback to the last one (e.g., Isha)
-        if (!foundPrayer) {
-          foundPrayer = prayerTimes[prayerTimes.length - 1];
+        // Handle edge case: if after last prayer (Isha), wrap to Fajr
+        if (!foundNextPrayer) {
+          foundNextPrayer = prayerTimes[0];
         }
 
-        setCurrentPrayer(foundPrayer);
+        setCurrentPrayer(foundCurrentPrayer);
+        setNextPrayer(foundNextPrayer);
 
-        // Play Azan sound only once at the matching time
-        if (currentTime === foundPrayer.time && !azanPlayed) {
+        // Play Azan once at correct time
+        if (foundNextPrayer && currentTime === foundNextPrayer.time && !azanPlayed) {
           azanAudio.play().catch((error) => {
             console.error("Error playing Azan sound:", error);
           });
-          setAzanPlayed(true); // Mark Azan as played
-
-          // Send notification when Azan time is reached
-          sendPushNotification(foundPrayer);
+          setAzanPlayed(true);
+          sendPushNotification(foundNextPrayer);
         }
 
-        // Reset Azan flag after the prayer time has passed
-        if (currentTime !== foundPrayer.time) {
+        if (foundNextPrayer && currentTime !== foundNextPrayer.time) {
           setAzanPlayed(false);
         }
       }, 1000);
 
-      return () => clearInterval(interval); // Cleanup interval
+      return () => clearInterval(interval);
     }
   }, [azanAudio, azanPlayed, isPermissionGranted]);
 
@@ -291,9 +335,18 @@ const NamazCard = () => {
         className="prayer-image"
         style={{ backgroundImage: `url(${currentPrayer.image})` }}
       >
+        <div className="dateprayer-overlay">
+          <h2 className="prayer-title">{gregorianDate}</h2>
+          <p className="prayer-time-overlay">{hijriDate}</p>
+        </div>
         <div className="prayer-overlay">
           <h2 className="prayer-title">{currentPrayer.name}</h2>
           <p className="prayer-time-overlay">{currentPrayer.time}</p>
+        </div>
+        <span className="line">  </span>
+        <div className="nextprayer-overlay">
+          <h2 className="prayer-title">{nextPrayer?.name}</h2>
+          <p className="prayer-time-overlay">{nextPrayer?.time}</p>
         </div>
       </div>
 
@@ -302,9 +355,8 @@ const NamazCard = () => {
         {prayerTimes.map((prayer) => (
           <div
             key={prayer.name}
-            className={`prayer-item ${
-              prayer.name === currentPrayer.name ? "highlighted" : ""
-            }`}
+            className={`prayer-item ${prayer.name === currentPrayer.name ? "highlighted" : ""
+              }`}
           >
             <span className="prayer-name">{prayer.name}:</span>
             <span className="prayer-time">{prayer.time}</span>

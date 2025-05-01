@@ -37,6 +37,31 @@
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
   z-index: 2;
 }
+.nextprayer-overlay {
+  margin-right: 1rem;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  z-index: 2;
+}
+.nextprayer-overlay .prayer-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+  font-family: Jost, sans-serif;
+}
+.nextprayer-overlay .prayer-time-overlay {
+  font-size: .8rem;
+  margin: 0;
+}
+.dateprayer-overlay .prayer-title {
+  color:rgba(30, 78, 77, 1);
+}
+.dateprayer-overlay .prayer-time-overlay {
+ color: rgba(30, 78, 77, 1);
+}
 
 .prayer-title {
   font-size: 1.8rem;
@@ -176,4 +201,14 @@
 
 .suggestions-list li:hover {
   background-color: #f0f0f0;
+}
+
+.line{
+  position: absolute;
+  height: 3px;
+  background: white;
+  width: 48%;
+  left: 30%;
+  bottom: 15%;
+
 }
