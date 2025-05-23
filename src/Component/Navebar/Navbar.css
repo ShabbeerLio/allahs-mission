@@ -468,4 +468,7 @@
       width: 19%;
       object-fit: cover;
     }
+    .company-logo {
+    top: 5%;
+  }
   }
